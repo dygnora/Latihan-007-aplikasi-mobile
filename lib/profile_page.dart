@@ -20,7 +20,7 @@ class ProfilePage extends StatelessWidget {
             const ProfileAvatar(),
             const SizedBox(height: 20),
             const ProfileInfo(
-              name: 'Deny Dermawan',
+              userName: 'Deny Dermawan',
               role: 'Teknik Informatika | Software Engineering | Global Institute',
             ),
           ],
@@ -49,12 +49,12 @@ class ProfileAvatar extends StatelessWidget {
 }
 
 class ProfileInfo extends StatelessWidget {
-  final String name;
+  final String userName;
   final String role;
 
   const ProfileInfo({
     super.key,
-    required this.name,
+    required this.userName,
     required this.role,
   });
 
@@ -63,7 +63,7 @@ class ProfileInfo extends StatelessWidget {
     return Column(
       children: [
         Text(
-          name,
+          userName,
           style: const TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
@@ -78,6 +78,24 @@ class ProfileInfo extends StatelessWidget {
             color: Colors.grey[700],
           ),
           textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 20), 
+        ElevatedButton.icon(
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                  'Fitur edit belum aktif pada modul statis.',
+                ),
+              ),
+            );
+          },
+          icon: const Icon(Icons.edit),
+          label: const Text('Edit Profil'),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.amberAccent,
+            foregroundColor: Colors.white,
+          ),
         ),
       ],
     );
