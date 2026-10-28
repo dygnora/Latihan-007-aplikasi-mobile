@@ -30,7 +30,6 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
-
 class ProfileAvatar extends StatelessWidget {
   const ProfileAvatar({super.key});
 
@@ -44,6 +43,41 @@ class ProfileAvatar extends StatelessWidget {
         size: 50,
         color: Colors.white,
       ),
+    );
+  }
+}
+
+class StatItem extends StatelessWidget {
+  final String count;
+  final String label;
+
+  const StatItem({
+    super.key,
+    required this.count,
+    required this.label,
+    });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          count,
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white
+          ),
+        ),
+        SizedBox(height: 3),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 14,
+            color: const Color.fromARGB(255, 86, 65, 2),
+          ),
+        )
+      ],
     );
   }
 }
@@ -97,6 +131,24 @@ class ProfileInfo extends StatelessWidget {
             foregroundColor: Colors.white,
           ),
         ),
+        const SizedBox(height: 24),
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          decoration: BoxDecoration(
+            color: Colors.amber,
+            borderRadius: BorderRadius.circular(12)
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: const [
+              StatItem(count: '15', label: 'Proyek'),
+              SizedBox(height: 24),
+              StatItem(count: '1,5k', label: 'Follower'),
+              SizedBox(height: 24),
+              StatItem(count: '100', label: 'Following')
+            ]
+          ),
+        )
       ],
     );
   }
