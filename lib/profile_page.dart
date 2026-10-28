@@ -132,24 +132,33 @@ class ProfileInfo extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 24),
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          decoration: BoxDecoration(
-            color: Colors.amber,
-            borderRadius: BorderRadius.circular(12)
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
-              StatItem(count: '15', label: 'Proyek'),
-              SizedBox(height: 24),
-              StatItem(count: '1,5k', label: 'Follower'),
-              SizedBox(height: 24),
-              StatItem(count: '100', label: 'Following')
-            ]
-          ),
-        )
+        const ProfileStats()
       ],
+    );
+  }
+}
+
+class ProfileStats  extends StatelessWidget {
+  const ProfileStats ({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        decoration: BoxDecoration(
+          color: Colors.amber,
+          borderRadius: BorderRadius.circular(12)
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: const [
+            StatItem(count: '15', label: 'Proyek'),
+            SizedBox(height: 24),
+            StatItem(count: '1,5k', label: 'Follower'),
+            SizedBox(height: 24),
+            StatItem(count: '100', label: 'Following')
+          ]
+        ),
     );
   }
 }
