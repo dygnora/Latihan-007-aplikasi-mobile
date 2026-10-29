@@ -1,6 +1,14 @@
 
 import 'package:flutter/material.dart';
 
+final List<String> experiences = [
+  'Backend Developer',
+  'Web Developer',
+  'Laravel Developer',
+  'Database Designer',
+  'Software Engineer',
+];
+
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
@@ -22,6 +30,16 @@ class ProfilePage extends StatelessWidget {
             const ProfileInfo(
               userName: 'Deny Dermawan',
               role: 'Teknik Informatika | Software Engineering | Global Institute',
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: experiences.length,
+                itemBuilder: (context, index) {
+                  return ExperienceCard(
+                    experience: experiences[index],
+                  );
+                },
+              ),
             ),
           ],
         ),
@@ -159,6 +177,36 @@ class ProfileStats  extends StatelessWidget {
             StatItem(count: '100', label: 'Following')
           ]
         ),
+    );
+  }
+}
+
+class ExperienceCard extends StatelessWidget {
+  final String experience;
+
+  const ExperienceCard({
+    super.key,
+    required this.experience,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 3,
+      margin: const EdgeInsets.symmetric(
+        vertical: 6,
+        horizontal: 4,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: ListTile(
+          leading: const Icon(
+            Icons.work,
+            color: Colors.blueAccent,
+          ),
+          title: Text(experience),
+        ),
+      ),
     );
   }
 }
