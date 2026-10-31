@@ -27,16 +27,31 @@ class _ProfilePageState extends State<ProfilePage> {
         backgroundColor: Colors.amberAccent,
         foregroundColor: Colors.white,
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 16,
+        ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const ProfileAvatar(),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             ProfileInfo(
               userName: userName,
               role: 'Teknik Informatika | Software Engineering | Global Institute',
             ),
+            const SizedBox(height: 24),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Pengalaman',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const SizedBox(height: 12),
             Expanded(
               child: ListView.builder(
                 itemCount: experiences.length,
@@ -93,14 +108,14 @@ class StatItem extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        SizedBox(height: 3),
+        const SizedBox(height: 3),
         Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 14,
-            color: const Color.fromARGB(255, 86, 65, 2),
+            color: Color.fromARGB(255, 86, 65, 2),
           ),
-        )
+        ),
       ],
     );
   }
@@ -128,7 +143,7 @@ class ProfileInfo extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 6),
         Text(
           role,
           style: TextStyle(
@@ -137,7 +152,7 @@ class ProfileInfo extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 16),
         ElevatedButton.icon(
           onPressed: () {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -155,8 +170,8 @@ class ProfileInfo extends StatelessWidget {
             foregroundColor: Colors.white,
           ),
         ),
-        const SizedBox(height: 24),
-        const ProfileStats()
+        const SizedBox(height: 20),
+        const ProfileStats(),
       ],
     );
   }
@@ -168,20 +183,27 @@ class ProfileStats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 12),
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 16,
+      ),
       decoration: BoxDecoration(
         color: Colors.amber,
-        borderRadius: BorderRadius.circular(12)
+        borderRadius: BorderRadius.circular(12),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: const [
-          StatItem(count: '15', label: 'Proyek'),
-          SizedBox(height: 24),
-          StatItem(count: '1,5k', label: 'Follower'),
-          SizedBox(height: 24),
-          StatItem(count: '100', label: 'Following')
-        ]
+      child: const Row(
+        children: [
+          Expanded(
+            child: StatItem(count: '15', label: 'Proyek'),
+          ),
+          Expanded(
+            child: StatItem(count: '1,5k', label: 'Follower'),
+          ),
+          Expanded(
+            child: StatItem(count: '100', label: 'Following'),
+          ),
+        ],
       ),
     );
   }
@@ -201,10 +223,10 @@ class ExperienceCard extends StatelessWidget {
       elevation: 3,
       margin: const EdgeInsets.symmetric(
         vertical: 6,
-        horizontal: 4,
+        horizontal: 2,
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(10),
         child: ListTile(
           leading: const Icon(
             Icons.work,
