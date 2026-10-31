@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 final List<String> experiences = [
@@ -9,8 +8,15 @@ final List<String> experiences = [
   'Software Engineer',
 ];
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  String userName = 'Deny Dermawan';
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +33,8 @@ class ProfilePage extends StatelessWidget {
           children: [
             const ProfileAvatar(),
             const SizedBox(height: 20),
-            const ProfileInfo(
-              userName: 'Deny Dermawan',
+            ProfileInfo(
+              userName: userName,
               role: 'Teknik Informatika | Software Engineering | Global Institute',
             ),
             Expanded(
@@ -73,7 +79,7 @@ class StatItem extends StatelessWidget {
     super.key,
     required this.count,
     required this.label,
-    });
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +90,7 @@ class StatItem extends StatelessWidget {
           style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.white
+            color: Colors.white,
           ),
         ),
         SizedBox(height: 3),
@@ -131,7 +137,7 @@ class ProfileInfo extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         ),
-        const SizedBox(height: 20), 
+        const SizedBox(height: 20),
         ElevatedButton.icon(
           onPressed: () {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -156,27 +162,27 @@ class ProfileInfo extends StatelessWidget {
   }
 }
 
-class ProfileStats  extends StatelessWidget {
-  const ProfileStats ({super.key});
+class ProfileStats extends StatelessWidget {
+  const ProfileStats({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.symmetric(vertical: 12),
-        decoration: BoxDecoration(
-          color: Colors.amber,
-          borderRadius: BorderRadius.circular(12)
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: const [
-            StatItem(count: '15', label: 'Proyek'),
-            SizedBox(height: 24),
-            StatItem(count: '1,5k', label: 'Follower'),
-            SizedBox(height: 24),
-            StatItem(count: '100', label: 'Following')
-          ]
-        ),
+      padding: const EdgeInsets.symmetric(vertical: 12),
+      decoration: BoxDecoration(
+        color: Colors.amber,
+        borderRadius: BorderRadius.circular(12)
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: const [
+          StatItem(count: '15', label: 'Proyek'),
+          SizedBox(height: 24),
+          StatItem(count: '1,5k', label: 'Follower'),
+          SizedBox(height: 24),
+          StatItem(count: '100', label: 'Following')
+        ]
+      ),
     );
   }
 }
